@@ -1,9 +1,20 @@
 const webpack = require('webpack');
+const copyPlugin = require('copy-webpack-plugin');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: './src/index.js',
   module: {
     rules: [
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+            options: { minimize: true }
+          }
+        ]
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -24,13 +35,12 @@ module.exports = {
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
-          'file-loader',
           {
-            loader: 'image-webpack-loader',
+            loader: 'file-loader',
             options: {
-              disable: true, // webpack@2.x and newer
+              name: 'image-[name]-[hash:8].[ext]'
             },
-          },
+          }
         ],
       },
       { test: /\.woff$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
@@ -49,10 +59,18 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+      filename: "./index.html"
+    }),
+    new copyPlugin([
+      { from: './public/favicon.ico', to: './' },
+      // { from: './src/assets', to: './assets' },
+    ])
   ],
   devServer: {
-    contentBase: './dist',
+    contentBase: './public',
     hot: true
   }
 };
