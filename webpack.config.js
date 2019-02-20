@@ -8,7 +8,36 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
-      }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader"
+        ]
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              disable: true, // webpack@2.x and newer
+            },
+          },
+        ],
+      },
+      { test: /\.woff$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+      { test: /\.woff2$/, loader: "url-loader?limit=10000&mimetype=application/font-woff2" },
+      { test: /\.ttf$/, loader: "url-loader?limit=10000&mimetype=application/octet-stream" },
+      { test: /\.eot([?]?.*)$/, loader: "file-loader" },
+      { test: /\.svg$/, loader: "url-loader?limit=10000&mimetype=image/svg+xml" }
     ]
   },
   resolve: {
