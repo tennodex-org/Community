@@ -8,7 +8,7 @@ export const HomeContainer = () => {
 
     return (
         <>
-            <div id="intro">
+            <div className="intro">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 col-md-offset-2 text-center intro animate-box">
@@ -24,7 +24,7 @@ export const HomeContainer = () => {
                     </div>
                 </div>
             </div>
-            <div id="qbootstrap-work">
+            <div className="qbootstrap-work">
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-12 col-md-offset-0 text-center animate-box intro-heading">
@@ -37,7 +37,7 @@ export const HomeContainer = () => {
                     </div>
                 </div>
             </div>
-            <div id="qbootstrap-work">
+            <div className="qbootstrap-work">
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-12 col-md-offset-0 text-center animate-box intro-heading">

@@ -48,7 +48,7 @@ export class App extends React.Component {
                     menuItems={this.state.menuItems}
                     isMenuOpen={this.state.isMenuOpen}
                 />
-                <div id="qbootstrap-page">
+                <div className="qbootstrap-page">
                     <Nav
                         setMenuOpen={this.setMenuOpen}
                     />

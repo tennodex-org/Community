@@ -6,15 +6,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader",
-            options: { minimize: true }
-          }
-        ]
-      },
-      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
@@ -58,15 +49,14 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
     new copyPlugin([
       { from: './public/favicon.ico', to: './' },
       { from: './public/index.html', to: './' },
-      // { from: './src/assets', to: './assets' },
     ])
-  ],
-  devServer: {
-    contentBase: './public',
-    hot: true
-  }
+  ]
 };

@@ -12,7 +12,7 @@ export const Menu = (props) => {
                 props.isMenuOpen &&
                 <div className="full-page" onClick={closeMenu} />
             }
-            <nav id="qbootstrap-main-nav" role="navigation">
+            <nav className="qbootstrap-main-nav" role="navigation">
                 <a href="#" onClick={closeMenu} className="js-qbootstrap-nav-toggle qbootstrap-nav-toggle active show"><i></i></a>
                 <div className="js-fullheight qbootstrap-table">
                     <div className="qbootstrap-table-cell js-fullheight">

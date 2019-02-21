@@ -10,7 +10,7 @@ export const Core = (props) => {
                 props.contributors.map((contributor) => {
                     return (
                         <Contributor {...contributor} additionalKey="core" key={`core-${contributor.name}`}>
-                            <p>{props.role}</p>
+                            <p>{contributor.role}</p>
                         </Contributor>
                     );
                 })
